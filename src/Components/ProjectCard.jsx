@@ -2,16 +2,18 @@ import React from 'react'
 
 function ProjectCard({title, description, image, tech}) {
   return (
-    <div className='bg-zinc-800 rounded-2xl overflow-hidden hover:-translate-y-2
+    <div className=' bg-white dark:bg-zinc-800
+        text-gray-900 dark:text-white rounded-2xl overflow-hidden hover:-translate-y-2
     transition duration-300 cursor-pointer'>
             <img src={image} alt={title} className='w-full h-60 object-cover' />
             <div className='p-6'>
                 <h3 className='text-xl font-semibold mb-4'>{title}</h3>
-                <p className='text-gray-400 mb-4'>{description}</p>
+                <p className='text-gray-600 dark:text-gray-400 mb-4'>{description}</p>
                 <div className='flex flex-wrap gap-2 mb-4'>
                     {
                         tech.map((item, index)=>(
-                            <span key={index} className='px-3 py-1 bg-zinc-600
+                            <span key={index} className='px-3 py-1  bg-gray-200 dark:bg-zinc-600
+                text-gray-700 dark:text-gray-200    
                             rounded-full text-sm'>
                                 {item}
                             </span>
@@ -23,7 +25,7 @@ function ProjectCard({title, description, image, tech}) {
                     rounded-lg font-medium hover:bg-purple-700 transition duration-300'>
                         View Demo
                     </a>
-                    <a href="#" className='flex-1 text-center px-4 py-2 border border-purple-500 font-medium rounded-lg 
+                    <a href="#" className='flex-1 text-center px-4 py-2 border border-purple-500 text-purple-600 dark:text-purple-400 font-medium rounded-lg 
                     hover:bg-purple-500/20 transition duration-300'>Code</a>
                 </div>
             </div>

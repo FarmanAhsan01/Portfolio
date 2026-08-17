@@ -8,9 +8,11 @@ function Work() {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: false, amount: 0.2 }} 
       id="experience"
-      className="py-20 bg-dark-800"
+      className="py-20 bg-gray-100 dark:bg-[#1a1a1a]
+        text-gray-900 dark:text-white
+        transition-colors duration-300 "
     >
       <div className="container item-center mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-4">

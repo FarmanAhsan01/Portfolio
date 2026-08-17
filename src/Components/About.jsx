@@ -12,18 +12,18 @@ function About() {
         transition={{ duration: 1.2, ease: 'easeOut' }}
         viewport={{ once: true }}
         id="about"
-        className="py-20 bg-dark-200 w-full"
+        className="py-20 bg-gray-100 dark:bg-dark-200 w-full transition-colors duration-300"
       >
 
         {/* Heading */}
         <div className="container mx-auto px-6">
 
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
               About <span className="text-purple-500">Me</span>
             </h2>
 
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Get to know more about my background and passion
             </p>
           </div>
@@ -57,11 +57,11 @@ function About() {
               className="w-full md:w-1/2 text-center md:text-left"
             >
 
-              <h3 className="text-2xl font-semibold mb-4">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
                 My <span className="text-purple-500">Journey</span>
               </h3>
 
-              <p className="text-gray-400 leading-relaxed mb-4">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                 I'm a passionate full-stack developer with over 1 year of
                 experience creating digital solutions for businesses around
                 the world. My journey started with basic HTML/CSS websites
@@ -69,7 +69,7 @@ function About() {
                 modern frameworks.
               </p>
 
-              <p className="text-gray-400 leading-relaxed mb-8">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 ">
                 When I'm not coding, you can find me exploring new
                 technologies, contributing to open-source projects, or sharing
                 my knowledge through tech blogs and tutorials. I believe in
@@ -84,7 +84,7 @@ function About() {
                 {aboutInfo.map((data, index) => (
                   <div
                     key={index}
-                    className="bg-dark-300 rounded-2xl p-6
+                    className="bg-white dark:bg-dark-300 rounded-2xl p-6
                     transition-transform duration-300
                     hover:-translate-y-2
                     cursor-pointer"
@@ -94,11 +94,11 @@ function About() {
                       <data.icon />
                     </div>
 
-                    <h3 className="text-xl font-semibold mb-3">
+                    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
                       {data.title}
                     </h3>
 
-                    <p className="text-gray-400">
+                    <p className="text-gray-600 dark:text-gray-400">
                       {data.description}
                     </p>
 

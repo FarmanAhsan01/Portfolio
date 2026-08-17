@@ -11,7 +11,7 @@ function Hero() {
       transition={{ duration: 1.2, ease: 'easeOut' }}
       viewport={{ once: true }}
       id='home'
-      className='min-h-screen flex items-center pt-20 pb-16 bg-gradient-to-r from-[#1a1a1a] via-[#2d2d2d] to-[#1a1a1a]'
+      className='min-h-screen flex items-center pt-20 pb-16 bg-gradient-to-r from-gray-100 via-white to-gray-100 dark:from-[#1a1a1a] dark:via-[#2d2d2d] dark:to-[#1a1a1a] text-gray-900 dark:text-white transition-colors duration-300'
     >
       <div className='container mx-auto px-6 flex flex-col md:flex-row items-center justify-between'>
 
@@ -23,7 +23,7 @@ function Hero() {
           <h2 className='text-2xl md:text-4xl font-semibold mb-6 typewriter mx-auto md:mx-0'>
             Full Stack Developer
           </h2>
-          <p className='text-gray-300 max-w-lg leading-relaxed mb-8 mx-auto md:mx-0'>
+          <p className='text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed mb-8 mx-auto md:mx-0'>
             I create stunning web experiences with modern technologies and innovative design.
           </p>
 

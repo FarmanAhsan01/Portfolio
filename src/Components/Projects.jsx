@@ -13,14 +13,14 @@ function Projects() {
         transition={{ duration: 1.2, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
         id="projects"
-        className="py-20 bg-dark-800"
+        className="py-20 bg-white text-gray-900 dark:bg-[#1a1a1a] dark:text-white transition-colors duration-300"
       >
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-center max-w-2xl mx-auto mb-8">
             My <span className="text-purple-500">Projects</span>
           </h2>
 
-          <p className="text-gray-400 text-center max-w-2xl mx-auto mb-10 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-center max-w-2xl mx-auto mb-10 text-lg">
             A selection of my recent work
           </p>
 
@@ -34,7 +34,7 @@ function Projects() {
           </div>
           <div className='text-center mt-12'>
               <a href="#" className='inline-flex items-center px-6 py-3 border
-              border-purple-500 rounded-lg font-medium hover:bg-purple-500/20 transition duration-300'>
+              border-purple-500 rounded-lg font-medium text-gray-900 dark:text-white hover:bg-purple-500/20 transition duration-300'>
                 <span>View More Projects</span>
                 <FaArrowRight className='ml-2'/>
               </a>
