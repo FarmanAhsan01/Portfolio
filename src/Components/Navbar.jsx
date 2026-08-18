@@ -45,7 +45,7 @@ function Navbar() {
                 </a>
              </div>
 
-             <div className='hidden md:flex space-x-10 ml-135'>
+             <div className='hidden md:flex space-x-7 ml-135 '>
                 <a href="#home" className='relative text-gray-700 dark:text-white/80 transition duration-300 hover:text-purple-500 group'>
                     <span>Home</span>
                     <span className='absolute left-0 -bottom-1 w-0 h-0.5 bg-purple-500 -transition-all duration-300 group-hover:w-full'></span>
@@ -70,20 +70,21 @@ function Navbar() {
                     <span>Contact</span>
                     <span className='absolute left-0 -bottom-1 w-0 h-0.5 bg-purple-500 transition-all duration-300 group-hover:w-full'></span>
                 </a>
-            <button
+                <div className='ml-10'>
+                    <button
                     onClick={toggleTheme}
                     className="w-10 h-10 flex items-center justify-center border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition duration-300"
                     aria-label="Toggle theme"
                 >
                     {darkMode ? <FaMoon /> : <FaSun />}
                 </button>
-
+                </div>
 
              </div>
                            <a
                      href={resume}
                      download="Farman_Ahsan_Resume.pdf"
-                     className="px-4 py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition duration-300"
+                     className="px-2 py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition duration-300"
                     >
                      Resume
                 </a>

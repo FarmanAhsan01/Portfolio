@@ -19,7 +19,7 @@ function Work() {
           Work <span className="text-purple-500">Experience</span>
         </h2>
 
-        <p className="max-w-2xl mx-auto text-gray-400 text-center mb-16">
+        <p className="max-w-2xl mx-auto t text-gray-600 dark:text-gray-400 text-center mb-16">
           My Professional Journey So Far
         </p>
 
@@ -31,10 +31,13 @@ function Work() {
                 className="relative pl-12 before:content-[''] before:absolute before:left-2 before:top-0 before:w-1 before:h-full before:bg-purple-500 cursor-pointer hover:-translate-y-2 transition-all duration-300"
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-0 top-0 w-5 h-5 rounded-full bg-purple-500 border-4 border-black"></div>
+                <div className="absolute left-0 top-0 w-5 h-5 rounded-full bg-purple-500 border-4 border-gray-100 dark:border-[#1a1a1a]
+                  transition-colors duration-300"></div>
 
                 {/* Work Card */}
-                <div className="bg-zinc-900 rounded-xl p-6 shadow-lg">
+                <div className=" bg-white dark:bg-zinc-900
+                  text-gray-900 dark:text-white rounded-xl p-6 shadow-lg  dark:shadow-none
+                  transition-colors duration-300">
                   <h3 className="text-xl font-semibold text-white">
                     {work.role}
                   </h3>
@@ -43,11 +46,11 @@ function Work() {
                     {work.company}
                   </h4>
 
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                     {work.duration}
                   </p>
 
-                  <p className="text-gray-300 mt-4">
+                  <p className="text-gray-700 dark:text-gray-300  mt-4">
                     {work.description}
                   </p>
                 </div>

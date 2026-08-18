@@ -18,7 +18,9 @@ const Contact = () => {
       transition={{ duration: 1.2, ease: "easeOut" }}
       viewport={{ once: false, amount: 0.2 }}
       id="contact"
-      className="py-20 bg-zinc-900"
+      className="py-20 bg-gray-100 dark:bg-zinc-900
+        text-gray-900 dark:text-white
+        transition-colors duration-300"
     >
 
       <div className="container mx-auto px-6">
@@ -28,7 +30,7 @@ const Contact = () => {
           Get In <span className="text-purple-500">Touch</span>
         </h2>
 
-        <p className="text-gray-400 text-center max-w-2xl mx-auto mb-16">
+        <p className="text-gray-600 dark:text-gray-400 text-center max-w-2xl mx-auto mb-16">
           Have a project in mind or want to collaborate? Let's talk!
         </p>
 
@@ -44,7 +46,7 @@ const Contact = () => {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-gray-300 mb-2"
+                  className="block text-gray-700 dark:text-gray-300 mb-2"
                 >
                   Your Name
                 </label>
@@ -53,7 +55,7 @@ const Contact = () => {
                   id="name"
                   type="text"
                   placeholder="Enter your name"
-                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-purple-500 transition duration-300"
+                  className="w-full  bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300"
                 />
               </div>
 
@@ -62,7 +64,7 @@ const Contact = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-gray-300 mb-2"
+                  className="block text-gray-700 dark:text-gray-300 mb-2"
                 >
                   Email Address
                 </label>
@@ -71,7 +73,7 @@ const Contact = () => {
                   id="email"
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-purple-500 transition duration-300"
+                  className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300"
                 />
               </div>
 
@@ -80,7 +82,7 @@ const Contact = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-gray-300 mb-2"
+                  className="block text-gray-700 dark:text-gray-300 mb-2"
                 >
                   Your Message
                 </label>
@@ -89,7 +91,7 @@ const Contact = () => {
                   id="message"
                   rows="6"
                   placeholder="Enter your message"
-                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-purple-500 transition duration-300 resize-none"
+                  className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300 resize-none"
                 ></textarea>
               </div>
 
@@ -120,7 +122,7 @@ const Contact = () => {
                   Location
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400">
                   New Delhi, Chandni Chowk
                 </p>
               </div>
@@ -138,7 +140,7 @@ const Contact = () => {
                   Email
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400">
                   farmanahsan77@gmail.com
                 </p>
               </div>
@@ -156,7 +158,7 @@ const Contact = () => {
                   Phone
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400">
                   +91 9953906280
                 </p>
               </div>
@@ -176,7 +178,7 @@ const Contact = () => {
                 <a
                   href="#"
                   aria-label="GitHub"
-                  className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full  bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
                 >
                   <FaGithub />
                 </a>
@@ -186,7 +188,7 @@ const Contact = () => {
                 <a
                   href="#"
                   aria-label="LinkedIn"
-                  className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
                 >
                   <FaLinkedin />
                 </a>
@@ -196,7 +198,7 @@ const Contact = () => {
                 <a
                   href="#"
                   aria-label="Twitter"
-                  className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition duration-300"
                 >
                   <FaTwitter />
                 </a>
@@ -206,7 +208,7 @@ const Contact = () => {
                 <a
                   href="#"
                   aria-label="Dribbble"
-                  className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-pink-500 hover:bg-pink-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-pink-500 hover:bg-pink-500 hover:text-white transition duration-300"
                 >
                   <FaDribbble />
                 </a>

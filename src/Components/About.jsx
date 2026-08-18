@@ -5,7 +5,7 @@ import { aboutInfo } from "../assets/assets"
 
 function About() {
   return (
-    <div className='w-full sm:px-20'>
+    <div className='w-full sm:px-20 bg-gray-100 dark:bg-dark-200'>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
