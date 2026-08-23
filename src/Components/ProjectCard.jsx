@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProjectCard({title, description, image, tech}) {
+function ProjectCard({title, description, image, tech, code}) {
   return (
     <div className=' bg-white dark:bg-zinc-800
         text-gray-900 dark:text-white rounded-2xl overflow-hidden hover:-translate-y-2
@@ -21,11 +21,13 @@ function ProjectCard({title, description, image, tech}) {
                     }
                 </div>
                 <div className='flex gap-2'>
-                    <a href="#" className='flex-1 text-center px-4 py-2 bg-purple-500
+                    {/* <a href="#" className='flex-1 text-center px-4 py-2 bg-purple-500
                     rounded-lg font-medium hover:bg-purple-700 transition duration-300'>
                         View Demo
-                    </a>
-                    <a href="#" className='flex-1 text-center px-4 py-2 border border-purple-500 text-purple-600 dark:text-purple-400 font-medium rounded-lg 
+                    </a> */}
+                    <a   href={code}
+            target='_blank'
+            rel='noopener noreferrer' className='flex-1 text-center px-4 py-2 border border-purple-500 text-purple-600 dark:text-purple-700 font-medium rounded-lg 
                     hover:bg-purple-500/20 transition duration-300'>Code</a>
                 </div>
             </div>
