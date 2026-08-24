@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   FaDribbble,
@@ -11,6 +11,41 @@ import {
 } from 'react-icons/fa'
 
 const Contact = () => {
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await response.json()
+
+      console.log(data)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -25,7 +60,6 @@ const Contact = () => {
 
       <div className="container mx-auto px-6">
 
-        {/* Heading */}
         <h2 className="text-3xl font-bold text-center mb-4">
           Get In <span className="text-purple-500">Touch</span>
         </h2>
@@ -34,13 +68,11 @@ const Contact = () => {
           Have a project in mind or want to collaborate? Let's talk!
         </p>
 
-
-        {/* Contact Form + Contact Information */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
 
-          {/* ================= CONTACT FORM ================= */}
+          {/* Contact Form */}
           <div>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
 
               {/* Name */}
               <div>
@@ -55,10 +87,11 @@ const Contact = () => {
                   id="name"
                   type="text"
                   placeholder="Enter your name"
-                  className="w-full  bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300"
                 />
               </div>
-
 
               {/* Email */}
               <div>
@@ -73,10 +106,11 @@ const Contact = () => {
                   id="email"
                   type="email"
                   placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300"
                 />
               </div>
-
 
               {/* Message */}
               <div>
@@ -91,12 +125,13 @@ const Contact = () => {
                   id="message"
                   rows="6"
                   placeholder="Enter your message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300 resize-none"
-                ></textarea>
+                />
               </div>
 
-
-              {/* Submit Button */}
+              {/* Submit */}
               <button
                 type="submit"
                 className="w-full px-6 py-3 bg-purple-500 rounded-lg font-medium text-white hover:bg-purple-700 transition duration-300"
@@ -107,11 +142,9 @@ const Contact = () => {
             </form>
           </div>
 
-
-          {/* ================= CONTACT INFORMATION ================= */}
+          {/* Contact Information */}
           <div className="space-y-8">
 
-            {/* Location */}
             <div className="flex items-start">
               <div className="text-purple-500 text-2xl mr-4">
                 <FaMapMarkerAlt />
@@ -128,8 +161,6 @@ const Contact = () => {
               </div>
             </div>
 
-
-            {/* Email */}
             <div className="flex items-start">
               <div className="text-purple-500 text-2xl mr-4">
                 <FaEnvelope />
@@ -146,8 +177,6 @@ const Contact = () => {
               </div>
             </div>
 
-
-            {/* Phone */}
             <div className="flex items-start">
               <div className="text-purple-500 text-2xl mr-4">
                 <FaPhone />
@@ -164,27 +193,22 @@ const Contact = () => {
               </div>
             </div>
 
-
             {/* Social Media */}
             <div className="pt-4">
-
               <h3 className="text-lg font-semibold mb-4">
                 Follow Me
               </h3>
 
               <div className="flex space-x-4">
 
-                {/* GitHub */}
                 <a
                   href="#"
                   aria-label="GitHub"
-                  className="w-12 h-12 rounded-full  bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
                 >
                   <FaGithub />
                 </a>
 
-
-                {/* LinkedIn */}
                 <a
                   href="#"
                   aria-label="LinkedIn"
@@ -193,8 +217,6 @@ const Contact = () => {
                   <FaLinkedin />
                 </a>
 
-
-                {/* Twitter */}
                 <a
                   href="#"
                   aria-label="Twitter"
@@ -203,8 +225,6 @@ const Contact = () => {
                   <FaTwitter />
                 </a>
 
-
-                {/* Dribbble */}
                 <a
                   href="#"
                   aria-label="Dribbble"
@@ -214,7 +234,6 @@ const Contact = () => {
                 </a>
 
               </div>
-
             </div>
 
           </div>
