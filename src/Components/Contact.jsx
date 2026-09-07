@@ -12,12 +12,18 @@ import {
 
 const Contact = () => {
 
+  // Form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
 
+  // Loading and success states
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -25,8 +31,15 @@ const Contact = () => {
     })
   }
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // Start loading
+    setLoading(true)
+
+    // Hide previous success message
+    setSuccess(false)
 
     try {
       const response = await fetch('http://127.0.0.1:8000/contact', {
@@ -41,8 +54,32 @@ const Contact = () => {
 
       console.log(data)
 
+      // Check if request failed
+      if (!response.ok) {
+        throw new Error(data.detail || 'Something went wrong')
+      }
+
+      // Clear the form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      })
+
+      // Show success message
+      setSuccess(true)
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setSuccess(false)
+      }, 5000)
+
     } catch (error) {
-      console.error(error)
+      console.error('Error submitting form:', error)
+
+    } finally {
+      // Stop loading
+      setLoading(false)
     }
   }
 
@@ -60,6 +97,7 @@ const Contact = () => {
 
       <div className="container mx-auto px-6">
 
+        {/* Heading */}
         <h2 className="text-3xl font-bold text-center mb-4">
           Get In <span className="text-purple-500">Touch</span>
         </h2>
@@ -70,8 +108,10 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
 
-          {/* Contact Form */}
+          {/* ==================== CONTACT FORM ==================== */}
+
           <div>
+
             <form onSubmit={handleSubmit} className="space-y-6">
 
               {/* Name */}
@@ -89,7 +129,13 @@ const Contact = () => {
                   placeholder="Enter your name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300"
+                  required
+                  className="w-full bg-white dark:bg-black
+                    border border-gray-300 dark:border-gray-700
+                    rounded-lg px-4 py-3
+                    text-gray-900 dark:text-white
+                    outline-none focus:border-purple-500
+                    transition duration-300"
                 />
               </div>
 
@@ -108,7 +154,13 @@ const Contact = () => {
                   placeholder="Enter your email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300"
+                  required
+                  className="w-full bg-white dark:bg-black
+                    border border-gray-300 dark:border-gray-700
+                    rounded-lg px-4 py-3
+                    text-gray-900 dark:text-white
+                    outline-none focus:border-purple-500
+                    transition duration-300"
                 />
               </div>
 
@@ -127,25 +179,68 @@ const Contact = () => {
                   placeholder="Enter your message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white outline-none focus:border-purple-500 transition duration-300 resize-none"
+                  required
+                  className="w-full bg-white dark:bg-black
+                    border border-gray-300 dark:border-gray-700
+                    rounded-lg px-4 py-3
+                    text-gray-900 dark:text-white
+                    outline-none focus:border-purple-500
+                    transition duration-300 resize-none"
                 />
               </div>
 
-              {/* Submit */}
+              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-purple-500 rounded-lg font-medium text-white hover:bg-purple-700 transition duration-300"
+                disabled={loading}
+                className="w-full px-6 py-3
+                  bg-purple-500 rounded-lg
+                  font-medium text-white
+                  hover:bg-purple-700
+                  transition duration-300
+                  disabled:opacity-60
+                  disabled:cursor-not-allowed"
               >
-                Send Message
+
+                {loading ? (
+                  <span className="flex items-center justify-center gap-2">
+
+                    {/* Loading Spinner */}
+                    <span
+                      className="w-5 h-5
+                        border-2 border-white
+                        border-t-transparent
+                        rounded-full
+                        animate-spin"
+                    ></span>
+
+                    Sending...
+
+                  </span>
+                ) : (
+                  'Send Message'
+                )}
+
               </button>
 
             </form>
+
+            {/* Success Message */}
+            {success && (
+              <p className="text-green-500 text-center mt-4">
+                Your message was successfully sent!
+              </p>
+            )}
+
           </div>
 
-          {/* Contact Information */}
+          {/* ==================== CONTACT INFORMATION ==================== */}
+
           <div className="space-y-8">
 
+            {/* Location */}
             <div className="flex items-start">
+
               <div className="text-purple-500 text-2xl mr-4">
                 <FaMapMarkerAlt />
               </div>
@@ -159,9 +254,12 @@ const Contact = () => {
                   New Delhi, Chandni Chowk
                 </p>
               </div>
+
             </div>
 
+            {/* Email */}
             <div className="flex items-start">
+
               <div className="text-purple-500 text-2xl mr-4">
                 <FaEnvelope />
               </div>
@@ -175,9 +273,12 @@ const Contact = () => {
                   farmanahsan77@gmail.com
                 </p>
               </div>
+
             </div>
 
+            {/* Phone */}
             <div className="flex items-start">
+
               <div className="text-purple-500 text-2xl mr-4">
                 <FaPhone />
               </div>
@@ -191,49 +292,80 @@ const Contact = () => {
                   +91 9953906280
                 </p>
               </div>
+
             </div>
 
             {/* Social Media */}
             <div className="pt-4">
+
               <h3 className="text-lg font-semibold mb-4">
                 Follow Me
               </h3>
 
               <div className="flex space-x-4">
 
+                {/* GitHub */}
                 <a
                   href="#"
                   aria-label="GitHub"
-                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full
+                    bg-white dark:bg-black
+                    border border-gray-200 dark:border-gray-700
+                    flex items-center justify-center
+                    text-purple-500
+                    hover:bg-purple-500 hover:text-white
+                    transition duration-300"
                 >
                   <FaGithub />
                 </a>
 
+                {/* LinkedIn */}
                 <a
                   href="#"
                   aria-label="LinkedIn"
-                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-purple-500 hover:bg-purple-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full
+                    bg-white dark:bg-black
+                    border border-gray-200 dark:border-gray-700
+                    flex items-center justify-center
+                    text-purple-500
+                    hover:bg-purple-500 hover:text-white
+                    transition duration-300"
                 >
                   <FaLinkedin />
                 </a>
 
+                {/* Twitter */}
                 <a
                   href="#"
                   aria-label="Twitter"
-                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full
+                    bg-white dark:bg-black
+                    border border-gray-200 dark:border-gray-700
+                    flex items-center justify-center
+                    text-blue-400
+                    hover:bg-blue-500 hover:text-white
+                    transition duration-300"
                 >
                   <FaTwitter />
                 </a>
 
+                {/* Dribbble */}
                 <a
                   href="#"
                   aria-label="Dribbble"
-                  className="w-12 h-12 rounded-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-pink-500 hover:bg-pink-500 hover:text-white transition duration-300"
+                  className="w-12 h-12 rounded-full
+                    bg-white dark:bg-black
+                    border border-gray-200 dark:border-gray-700
+                    flex items-center justify-center
+                    text-pink-500
+                    hover:bg-pink-500 hover:text-white
+                    transition duration-300"
                 >
                   <FaDribbble />
                 </a>
 
               </div>
+
             </div>
 
           </div>
