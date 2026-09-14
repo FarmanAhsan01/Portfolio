@@ -306,7 +306,7 @@ const Contact = () => {
 
                 {/* GitHub */}
                 <a
-                  href="#"
+                  href="https://github.com/FarmanAhsan01"
                   aria-label="GitHub"
                   className="w-12 h-12 rounded-full
                     bg-white dark:bg-black
@@ -321,7 +321,7 @@ const Contact = () => {
 
                 {/* LinkedIn */}
                 <a
-                  href="#"
+                  href="www.linkedin.com/in/farman-ahsan"
                   aria-label="LinkedIn"
                   className="w-12 h-12 rounded-full
                     bg-white dark:bg-black
@@ -334,7 +334,7 @@ const Contact = () => {
                   <FaLinkedin />
                 </a>
 
-                {/* Twitter */}
+                {/* Twitter
                 <a
                   href="#"
                   aria-label="Twitter"
@@ -347,9 +347,9 @@ const Contact = () => {
                     transition duration-300"
                 >
                   <FaTwitter />
-                </a>
+                </a> */}
 
-                {/* Dribbble */}
+                {/* Dribbble
                 <a
                   href="#"
                   aria-label="Dribbble"
@@ -362,7 +362,7 @@ const Contact = () => {
                     transition duration-300"
                 >
                   <FaDribbble />
-                </a>
+                </a> */}
 
               </div>
 

@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from database import SessionLocal, engine
 from models import Base, Contact
 from schemas import ContactCreate
+from email_service import send_contact_email
 
 
 app = FastAPI()
@@ -44,6 +45,7 @@ def home():
 @app.post("/contact")
 def receive_contact(
     contact: ContactCreate,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db)
 ):
     new_contact = Contact(
@@ -55,6 +57,13 @@ def receive_contact(
     db.add(new_contact)
     db.commit()
     db.refresh(new_contact)
+
+    background_tasks.add_task(
+    send_contact_email,
+    contact.name,
+    contact.email,
+    contact.message
+    )
 
     return {
         "success": True,
