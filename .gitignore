@@ -12,7 +12,10 @@ dist
 dist-ssr
 *.local
 
-
+node_modules/
+dist/
+.git/
+.gitignore
 
 venv/
 .env
